@@ -13,24 +13,24 @@ suite("Unit Tests", function () {
     });
     // #2
     test("#isDefined, #isUndefined", function () {
-      assert.fail(null, "null is not undefined");
-      assert.fail(undefined, "undefined IS undefined");
-      assert.fail("hello", "A string is not undefined");
+      assert.isDefined(null, "null is not undefined");
+      assert.isUndefined(undefined, "undefined IS undefined");
+      assert.isDefined("hello", "A string is not undefined");
     });
     // #3
     test("#isOk, #isNotOk", function () {
-      assert.fail(null, "null is falsey");
-      assert.fail("I'm truthy", "A string is truthy");
-      assert.fail(true, "true is truthy");
+      assert.isNotOk(null, "null is falsey");
+      assert.isOk("I'm truthy", "A string is truthy");
+      assert.isOk(true, "true is truthy");
     });
     // #4
     test("#isTrue, #isNotTrue", function () {
-      assert.fail(true, "true is true");
-      assert.fail(
+      assert.isTrue(true, "true is true");
+      assert.isTrue(
         !!"double negation",
         "Double negation of a truthy value is true"
       );
-      assert.fail(
+      assert.isNotTrue(
         { value: "truthy" },
         "Objects are truthy, but are not boolean values"
       );
@@ -42,10 +42,14 @@ suite("Unit Tests", function () {
   suite("Equality", function () {
     // #5
     test("#equal, #notEqual", function () {
-      assert.fail(12, "12", "Numbers are coerced into strings with ==");
-      assert.fail({ value: 1 }, { value: 1 }, "== compares object references");
-      assert.fail(6 * "2", "12");
-      assert.fail(6 + "2", "12");
+      assert.equal(12, "12", "Numbers are coerced into strings with ==");
+      assert.notEqual(
+        { value: 1 },
+        { value: 1 },
+        "== compares object references"
+      );
+      assert.equal(6 * "2", "12");
+      assert.notEqual(6 + "2", "12");
     });
     // #6
     test("#strictEqual, #notStrictEqual", function () {
