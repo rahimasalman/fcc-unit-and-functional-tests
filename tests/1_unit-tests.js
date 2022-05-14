@@ -53,19 +53,19 @@ suite("Unit Tests", function () {
     });
     // #6
     test("#strictEqual, #notStrictEqual", function () {
-      assert.fail(6, "6");
-      assert.fail(6, 3 * 2);
-      assert.fail(6 * "2", 12);
-      assert.fail([1, "a", {}], [1, "a", {}]);
+      assert.notStrictEqual(6, "6");
+      assert.strictEqual(6, 3 * 2);
+      assert.strictEqual(6 * "2", 12);
+      assert.notStrictEqual([1, "a", {}], [1, "a", {}]);
     });
     // #7
     test("#deepEqual, #notDeepEqual", function () {
-      assert.fail(
+      assert.deepEqual(
         { a: "1", b: 5 },
         { b: 5, a: "1" },
         "The order of keys doesn't matter"
       );
-      assert.fail(
+      assert.notDeepEqual(
         { a: [5, 6] },
         { a: [6, 5] },
         "The order of array elements does matter"
@@ -89,15 +89,15 @@ suite("Unit Tests", function () {
     });
     // #9
     test("#isBelow, #isAtLeast", function () {
-      assert.fail("world".length, 5);
-      assert.fail(2 * Math.random(), 0);
-      assert.fail(5 % 2, 2);
-      assert.fail(2 / 3, 1);
+      assert.isAtLeast("world".length, 5);
+      assert.isAtLeast(2 * Math.random(), 0);
+      assert.isBelow(5 % 2, 2);
+      assert.isBelow(2 / 3, 1);
     });
     // #10
     test("#approximately", function () {
-      assert.fail(weirdNumbers(0.5), 1, 0);
-      assert.fail(weirdNumbers(0.2), 1, 0);
+      assert.approximately(weirdNumbers(0.5), 1, 0.61);
+      assert.approximately(weirdNumbers(0.2), 1, 1.05);
     });
   });
 
@@ -108,11 +108,11 @@ suite("Unit Tests", function () {
   suite("Arrays", function () {
     // #11
     test("#isArray, #isNotArray", function () {
-      assert.fail(
+      assert.isArray(
         "isThisAnArray?".split(""),
         "String.prototype.split() returns an array"
       );
-      assert.fail([1, 2, 3].indexOf(2), "indexOf returns a number");
+      assert.isNotArray([1, 2, 3].indexOf(2), "indexOf returns a number");
     });
     // #12
     test("Array #include, #notInclude", function () {
