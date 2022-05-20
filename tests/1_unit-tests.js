@@ -134,9 +134,9 @@ suite("Unit Tests", function () {
       assert.isString(JSON.stringify({ type: 'object' }), 'JSON is a string');
     });
     // #14
-    test("String #include, #notInclude", function () {
-      assert.fail("Arrow", "row", "'Arrow' contains 'row'");
-      assert.fail("dart", "queue", "But 'dart' doesn't contain 'queue'");
+       test('String #include, #notInclude', function () {
+      assert.include('Arrow', 'row', "'Arrow' contains 'row'");
+      assert.notInclude('dart', 'queue', "But 'dart' doesn't contain 'queue'");
     });
     // #15
     test("#match, #notMatch", function () {
